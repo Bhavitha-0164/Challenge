@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <style>
+    /* --- CSS Styling --- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+    .container {
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Student Dashboard</h1>
+    <p>Welcome to your learning platform</p>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">Progress</a>
+    <a href="#">Settings</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Course List Section -->
+    <div class="card">
+      <h2>Your Courses</h2>
+      <ul id="courseList">
+        <li>Math</li>
+        <li>Science</li>
+      </ul>
+      <input type="text" id="courseInput" placeholder="Add course">
+      <button class="btn" onclick="addCourse()">Add Course</button>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="card">
+      <h2>Your Progress</h2>
+      <p>You have completed <span id="progress">60</span>% of your learning.</p>
+      <button class="btn" onclick="increaseProgress()">Update Progress</button>
+    </div>
+  </div>
+
+  <script>
+    // --- JavaScript Logic ---
+
+    // Add a new course to the list
+    function addCourse() {
+      const input = document.getElementById('courseInput');
+      const courseName = input.value.trim();
+      if (courseName !== '') {
+        const li = document.createElement('li');
+        li.textContent = courseName;
+        document.getElementById('courseList').appendChild(li);
+        input.value = '';
+      }
+    }
+
+    // Increase the progress percentage by 10
+    function increaseProgress() {
+      const progress = document.getElementById('progress');
+      let current = parseInt(progress.textContent);
+      if (current < 100) {
+        current += 10;
+        progress.textContent = current;
+      }
+    }
+  </script>
+
+</body>
+</html>
